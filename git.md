@@ -26,7 +26,7 @@ git clone <URL>  //从远程仓库clone到本地
 ```
 git init  //将当前目录变为仓库
 git add 文件名   //将文件添加到暂存区
-git ass -A  //添加全部文件
+git add -A/.  //添加全部文件
 git commit –m "描述"  //将暂存区提交到仓库
 ```
 
@@ -41,7 +41,7 @@ git reflog  //查看所有版本的commit ID
 
 * #### 撤销
 ```
-git checkout --文件名  //撤销工作去的修改
+git checkout --文件名  //撤销工作区的修改
 git reset HEAD 文件名  //撤销暂存区的修改
 git reset --hard 该版本ID  //回退到历史版本
 git reset --hard HEAD^  //回退到上个版本
