@@ -219,7 +219,7 @@ function reverseNum(n) {
         num = 0;
     while(len) {
         num += n % 10 * 10**len;
-        n = n/10 | 0;if
+        n = n/10 | 0;
         if(String(n).length == 1) {
             num += n;
         }
@@ -265,7 +265,7 @@ function reverseNum(n) {
 
 `== != // undefined == null, NaN != NaN`
 
-`~ --> -n-1 // ~15=-16` 按位不运算符 `~~ --> -(-n-1)=n // ~~"15"=15`
+`~ --> -n-1 // ~15=-16` 按位不运算符 `~~ --> -(-n-1)-1=n // ~~"15"=15`
 
 不发生类型转化
 
@@ -1114,7 +1114,7 @@ Object.prototype.toString.call(obj) --> "[object Object]"
 
 4. `obj.func();` `func()` 里面的 `this` 指向 `obj`
 
-1. 写出代码输出结果
+写出代码输出结果
 ```
 var name = "222";
 var a = {
@@ -1376,7 +1376,7 @@ Array.prototype.push = function () {
     return this.length;
 }
 ```
-`arr.splice(从第几位开始，截取多少的长度，在切口处添加新的数据) 返回截取的数组`
+`arr.splice(从第几位开始，截取多少的长度，在切口处添加新的数据)` 返回截取的数组
 ```
 数组索引
 pos += pos > 0 ? 0 : this.length;
@@ -1466,7 +1466,6 @@ function type(target) {
 ```
 3. 数组去重 在原型链上编程
 
-利用对象属性名不能重复 `hash`
 ```
 Array.prototype.unique = function () {
     var arr = [];
@@ -1478,6 +1477,7 @@ Array.prototype.unique = function () {
     return arr;
 }
 ```
+利用对象属性名不能重复 `hash`
 ```
 Array.prototype.unique = function () {
     var temp = {},
@@ -1590,11 +1590,11 @@ DOM 基本操作
 
 改 `parent.replaceChild(new, origin);`
 
-`Element` 节点的一些属性
+Element 节点的一些属性
 
 `innerHTML` `innerText`(火狐不兼容)/`textContent`(老版本IE不好使)
 
-`Element` 节点的一些方法
+Element 节点的一些方法
 
 `ele.setAttribute(); ele.getAttribute();`
 
