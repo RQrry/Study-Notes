@@ -47,6 +47,12 @@ git reset --hard 该版本ID  //回退到历史版本
 git reset --hard HEAD^  //回退到上个版本
 ```
 
+* #### 删除
+```
+git rm file  //删除文件
+git rm -r dir/  //删除文件夹， -f 忽略文件更新状态检查
+```
+
 * #### 分支
 ```
 git branch dev  //创建分支
