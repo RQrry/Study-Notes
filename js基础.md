@@ -1,14 +1,14 @@
 ## 水平垂直居中
 
 html
-```
+```html
 <div class="parent">
     <div class="item"></div>
 </div>
 ```
 css
 1. 已知元素宽高
-```
+```css
 .item {
     position: absolute;
     width: WIDTH;
@@ -19,7 +19,7 @@ css
     margin-top: -HEIGHT/2;
 }
 ```
-```
+```css
 .item {
     position: absolute;
     width: WIDTH;
@@ -32,7 +32,7 @@ css
 }
 ```
 2. 未知元素宽高
-```
+```css
 .item {
     position: absolute;
     top: 50%;
@@ -40,7 +40,7 @@ css
     transform: translate(-50%, -50%);
 }
 ```
-```
+```css
 .parent {
     display: flex;
     justify-content: center;
@@ -73,7 +73,7 @@ Safari(webkit)
 可正常计算的范围：小数点前16和后16位
 
 1. 运算符
-```
+```js
 var a = (10 * 3 - 4 / 2 + 1) % 2,
     b = 3;
 b %= a + 3;
@@ -82,7 +82,7 @@ document.write("<br/>");
 document.write(--b);      // 2
 ```
 2. 交换a、b的值
-```
+```js
 var a = 123,
     b = 234;
 a = a + b;
@@ -90,7 +90,7 @@ b = a - b;
 a = a - b;
 ```
 3. 快速求幂
-```
+```js
 Math.pow(2, n);
 2 << (n - 1);
 2 ** n;
@@ -102,14 +102,14 @@ Math.pow(2, n);
 
 `data && fn(data)`
 
-```
+```js
 div.onclick = function(e) {
     var event = e || window.event;
 }
 ```
 
 1. 计算2的n次幂，n可输入，n为自然数
-```
+```js
 function power2(n) {
     var pow = 1;
     for(var i=0; i<n; i++) {
@@ -119,7 +119,7 @@ function power2(n) {
 }
 ```
 2. 计算n的阶乘，n可输入
-```
+```js
 function factorial(n) {
     var fac = 1;
     for(; n>0; n--) {
@@ -136,7 +136,7 @@ function factorial(n) {
 }
 ```
 3. 著名的斐波那契数列 1 1 2 3 5 8 输出第n项
-```
+```js
 function fibonacci(n) {
     if(n <= 2) {
         return 1;
@@ -145,7 +145,7 @@ function fibonacci(n) {
 }
 ```
 4. 编写一程序，输入一个三位数的正整数，输出时反向输出，如：输入456，输出654
-```
+```js
 function reverseNum(n) {
     var a = n % 10,
         b = (n - a) / 10 % 10,
@@ -154,7 +154,7 @@ function reverseNum(n) {
 }
 ```
 5. 输入a,b,c三个数，打印出最大的
-```
+```js
 function max3(a, b, c) {
     var max = 0;
     if(a > max) {
@@ -170,7 +170,7 @@ function max3(a, b, c) {
 }
 ```
 6. 打印出100以内的质数
-```
+```js
 function prime(n) {
     for(var i=1; i<=n; i++) {
         for(var j=2; j<=i; j++) {
@@ -213,7 +213,7 @@ function prime(n) {
 }
 ```
 7. 反向输出数字
-```
+```js
 function reverseNum(n) {
     var len = String(n).length - 1,
         num = 0;
@@ -280,7 +280,7 @@ function reverseNum(n) {
 `函数名 函数名.length // 实参列表`
 
 实参与形参相映射
-```
+```js
 function myFun(a, b) {
     a = 2;
     console.log(arguments[0]); // 2
@@ -294,7 +294,7 @@ myFun(1);
 ```
 
 1. 实现加法计数器
-```
+```js
 function mySum() {
     var sum = 0;
     for(var i=0; i<arguments.length; i++) {
@@ -304,7 +304,7 @@ function mySum() {
 }
 ```
 2. 定义一组函数，输入数字，逆转并输出汉字形式
-```
+```js
 function reverse() {
     var num = window.prompt("input");
     var str = "";
@@ -360,7 +360,7 @@ js运行三部曲
 
 4. 在函数体里面找函数声明，值赋予函数体
 
-```
+```js
 function fn(a) {
     console.log(a); // function a() {}
     var a = 123;
@@ -396,7 +396,7 @@ AO {
     d: function d() {}
 }
 ```
-```
+```js
 function test(a, b) {
     console.log(a); // 1
     c = 0;
@@ -431,7 +431,7 @@ AO {
     d: function d() {}
 }
 ```
-```
+```js
 function bar() {
     return foo;
     foo = 10;
@@ -440,7 +440,7 @@ function bar() {
 }
 console.log(bar()); // function foo() {}
 ```
-```
+```js
 console.log(bar()); // 11
 function bar() {
     foo = 10;
@@ -450,7 +450,7 @@ function bar() {
 }
 ```
 1. 
-```
+```js
 a = 100;
 function demo(e) {
     function e() {}
@@ -486,7 +486,7 @@ AO {
 }
 ```
 2. 
-```
+```js
 var str = false + 1;
 console.log(str); // 1
 var demo = false == 1;
@@ -506,7 +506,7 @@ if(11 + "11" * 2 == 33) {
 
 查找变量：从作用域链的顶端依次向下查找
 
-```
+```js
 function a() {
     function b() {
         function c() {
@@ -545,7 +545,7 @@ c doing   c.[[scope]] --> 0: cAO
 
 此类函数没有声明，在一次执行过后即释放。针对初始化功能的函数
 
-```
+```js
 (function () {})();
 
 (function () {}());
@@ -571,7 +571,7 @@ c doing   c.[[scope]] --> 0: cAO
 
 4. 模块化开发，防止污染全局变量
 
-```
+```js
 // 不依赖外部变量，实现累加器
 function add() {
     var count = 0;
@@ -583,7 +583,7 @@ function add() {
 var counter = add();
 counter(); // 1
 ```
-```
+```js
 function test() {
     var num = 100;
     function a() {
@@ -600,7 +600,7 @@ var myArr = test();
 myArr[0](); // 101
 myArr[1](); // 100
 ```
-```
+```js
 // 缓存
 function eater() {
     var food = "apple";
@@ -625,7 +625,7 @@ eater1.eat(); // There is nothing！
 eater1.push("banana");
 eater1.eat(); // I am eating banana
 ```
-```
+```js
 // 私有化变量
 function Deng(name, wife) {
     var prepareWife = "xiaozhang"; // 私有变量
@@ -643,7 +643,7 @@ function Deng(name, wife) {
 }
 var deng = new Deng("deng", "xiaoliu");
 ```
-```
+```js
 // 模块开发，防止污染全局变量
 var init = (function () {
     var name = "abc";
@@ -656,7 +656,7 @@ var init = (function () {
 })();
 ```
 1. 
-```
+```js
 function test() {
     var arr = [];
     for(var i=0; i<10; i++) {
@@ -674,7 +674,7 @@ for(var j=0; j<10; j++) {
 }
 ```
 2. 
-```
+```js
 var x = 1;
 if(function f() {}) { // (function f() {}) 表达式执行完后，失去对函数名的索引
     x += typeof f;
@@ -698,7 +698,7 @@ console.log(x); // "1undefined"
 2. 执行 `this.xxx = xxx;`
 3. 隐式的返回 `this`
 
-```
+```js
 function Person(name, age) {
     // var this = {};
     this.name = name;
@@ -724,7 +724,7 @@ var person = new Person("xiaowang", 18);
 
 `new Boolean()`
 
-```
+```js
 var str = "abc";
 str += 1; // "abc1"
 var test = typeof str; // "string"
@@ -736,7 +736,7 @@ if(test.length == 6) {
 console.log(test.sign); // undefined
 ```
 1. 
-```
+```js
 function Person(name, age, sex) {
     var a = 0;
     this.name = name;
@@ -755,7 +755,7 @@ var oPerson1 = new Person();
 oPerson1.say(); // 1
 ```
 2. 
-```
+```js
 var x = 1, y = z = 0;
 function add(n) {
     return n = n + 1;
@@ -770,7 +770,7 @@ z = add(x);
 // 1 4 4
 ```
 3. 下面代码中 `console.log` 的结果是 `[1, 2, 3, 4, 5]` 的有 (ACD)
-```
+```js
 // A
 function foo(x) {
     console.log(arguments);
@@ -801,13 +801,13 @@ function bar(x) {
 foo(1, 2, 3, 4, 5);
 ```
 4. 
-```
+```js
 parseInt(3, 8); // 3
 parseInt(3, 2); // NaN
 parseInt(3, 0); // 3
 ```
 5. 
-```
+```js
 function b(x, y, a) {
     arguments[2] = 10;
     alert(a); // 10
@@ -824,7 +824,7 @@ b(1, 2, 3);
 （提示：字符串有一个方法 `charCodeAt()` 一个中文占两个字节，一个英文占一个字节。
 定义和用法：`charCodeAt()` 方法可返回指定位置的字符的 `Unicode` 编码，这个返回值是 `0-65535` 之间的整数。
 当返回值是 `<=255` 时，为英文，当返回值 `>255` 时为中文）
-```
+```js
 function bytesLength(target) {
     var len = target.length;
     var count = len;
@@ -837,7 +837,7 @@ function bytesLength(target) {
 }
 ```
 7. 
-```
+```js
 var f = ( // 逗号操作符
     function f() {
         return "1";
@@ -852,7 +852,7 @@ typeof f; // "number"
 ## 原型
 
 1. 原型是 `function` 对象的一个属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象
-```
+```js
 // Person.prototype --> 原型
 // Person.prototype = {} 是祖先
 
@@ -878,7 +878,7 @@ var car1 = new Car("black", "xiaoli");
 2. 利用原型特点和概念，可以提取公有属性
 
 3. 对象如何查看原型 --> 隐式属性 `__proto__`
-```
+```js
 fucntion Person() {}
 
 var person = new Person();
@@ -890,7 +890,7 @@ Person.call(person);
 ```
 
 4. 对象如何查看对象的构造函数 --> `constructor`
-```
+```js
 Person.prototype.constructor = Person;
 
 var person = new Person();
@@ -899,7 +899,7 @@ person.constructor --> Person.prototype.constructor
 
 ## 原型链
 
-```
+```js
 Grand.prototype.lastName = "Qiu";
 function Grand() {}
 
@@ -918,7 +918,7 @@ var son = new Son();
 绝大多数对象最终都会继承自 `Object.prototype` 例外：`var obj = Object.create(null);`
 
 `Object.create(原型);`
-```
+```js
 var obj = {
     name: "sunny",
     age: 123
@@ -931,7 +931,7 @@ var person = Object.create(Person.prototype);
 ```
 
 `toString()`
-```
+```js
 var num = 123;
 num.toString(); --> new Number(num).toString();
 Number.prototype.toString = function() {}
@@ -943,7 +943,7 @@ Number.prototype.toString = function() {}
 ## `call/apply`
 
 作用：改变 `this` 指向
-```
+```js
 function Person(name, age) {
     this.name = name;
     this.age = age;
@@ -951,7 +951,7 @@ function Person(name, age) {
 var obj = {};
 Person.call(obj, "cheng", 300); // obj = {name: "cheng", age: 300}
 ```
-```
+```js
 function Person(name, age, sex) {
     this.name = name;
     this.age = age;
@@ -977,7 +977,7 @@ var student = new Student("sunny", 123, "male", 139, 2017);
 
 ## 继承模式
 
-```
+```js
 // 圣杯模式
 function inherit(Target, Origin) {
     function F() {};
@@ -995,7 +995,7 @@ inherit(Son, Father);
 var son = new Son();
 var father = new Father();
 ```
-```
+```js
 var inherit = (function () {
     var F = function () {}; // 私有变量
     return function (Target, Origin) {
@@ -1010,7 +1010,7 @@ var inherit = (function () {
 命名空间
 
 管理变量，防止污染全局，适用于模块化开发
-```
+```js
 // 模块开发，防止污染全局变量
 var init = (function () { // 入口函数
     var name = "abc";
@@ -1024,7 +1024,7 @@ var init = (function () { // 入口函数
 ```
 
 1. 实现链式调用模式（模仿jquery）
-```
+```js
 var deng = {
     smoke: function () {
         console.log("Smoking... xuan cool!!!");
@@ -1045,7 +1045,7 @@ deng.smoke().drink().perm();
 ## 对象的枚举 `enumeration`
 
 1. `for in` 
-```
+```js
 var obj = {
     name: "13",
     age: 123,
@@ -1061,7 +1061,7 @@ for(var prop in obj) {
 ```
 
 2. `hasOwnProperty`
-```
+```js
 var obj = {
     name: "13",
     age: 123,
@@ -1080,17 +1080,17 @@ for(var prop in obj) { // for in 循环会打印原型链上的属性，但不�
 ```
 
 3. `in`
-```
+```js
 "height" in obj // true
 "lastName" in obj // true
 ```
 
 4. `instanceof`
-```
-看A对象的原型链上 有没有 B的原型
+```js
+// 看A对象的原型链上 有没有 B的原型
 A instanceof B // ture
 ```
-```
+```js
 var arr = [],
     obj = {};
 
@@ -1115,7 +1115,7 @@ Object.prototype.toString.call(obj) --> "[object Object]"
 4. `obj.func();` `func()` 里面的 `this` 指向 `obj`
 
 写出代码输出结果
-```
+```js
 var name = "222";
 var a = {
     name: "111",
@@ -1139,13 +1139,13 @@ b.say();  // 333
 
 ## `arguments`
 
-```
+```js
 function test() {
     console.log(arguments.callee == test); 
 }
 test(); // true
 ```
-```
+```js
 var num = (function (n) {
     if(n == 1) {
         return 1;
@@ -1153,7 +1153,7 @@ var num = (function (n) {
     return n * arguments.callee(n - 1);
 })(50)
 ```
-```
+```js
 function test() {
     console.log(arguments.callee);
     function demo() {
@@ -1163,7 +1163,7 @@ function test() {
 }
 test(); // test
 ```
-```
+```js
 function test() {
     demo();
 }
@@ -1174,7 +1174,7 @@ test();
 ```
 
 1. 
-```
+```js
 var foo = "123";
 function print() {
     var foo = "456";
@@ -1183,7 +1183,7 @@ function print() {
 }
 print(); // 456
 ```
-```
+```js
 var foo = 123;
 function print() {
     this.foo = 234;
@@ -1198,7 +1198,7 @@ function print() {
 }
 new print(); // 123
 ```
-```
+```js
 var a = 5;
 function test() {
     // var this = { // this 上没有 a
@@ -1214,7 +1214,7 @@ test(); // 0 5 0
 new test(); // 0 undefined 0
 ```
 2. 
-```
+```js
 function print() {
     console.log(foo); // undefined
     var foo = 2;
@@ -1224,7 +1224,7 @@ function print() {
 print();
 ```
 3. 
-```
+```js
 function print() {
     var test;
     test();
@@ -1235,7 +1235,7 @@ function print() {
 print(); // 1
 ```
 4. 
-```
+```js
 function print() {
     var x = 1;
     if(x == "1") console.log("One!");
@@ -1244,7 +1244,7 @@ function print() {
 print(); // One!
 ```
 5. 
-```
+```js
 function print() {
     var marty = {
         name: "marty",
@@ -1266,7 +1266,7 @@ function print() {
 print();
 ```
 6. 
-```
+```js
 var bar = {a: "002"};
 function print() {
     bar.a = "a";
@@ -1279,7 +1279,7 @@ function print() {
 print()();
 ```
 7. 
-```
+```js
 function Person(name, age, sex) {
     var a = 0;
     this.name = name;
@@ -1301,7 +1301,7 @@ oPerson1.say(); // 1
 ## 克隆
 
 浅层克隆
-```
+```js
 var obj = {
     name: "abc",
     age: 123,
@@ -1320,7 +1320,7 @@ clone(obj, obj1);
 
 深层克隆
 
-```
+```js
 // 遍历对象 for(var prop in obj)
 // 1.判断是不是原始值 typeof() object 
 // 2.判断是数组还是对象 toString instanceof constructor
@@ -1368,7 +1368,7 @@ function deepClone(origin, target) {
 改变原数组
 
 `push, pop, shift, unshift, sort, reverse, splice`
-```
+```js
 Array.prototype.push = function () {
     for(var i=0; i<arguments.length; i++) {
         this[this.length] = arguments[i];
@@ -1377,13 +1377,13 @@ Array.prototype.push = function () {
 }
 ```
 `arr.splice(从第几位开始，截取多少的长度，在切口处添加新的数据)` 返回截取的数组
-```
-数组索引
+```js
+// 数组索引
 pos += pos > 0 ? 0 : this.length;
 ```
 
 1. 随机打乱一个数组，一次性输出
-```
+```js
 var arr = [1,2,3,4,5,6,7];
 arr.sort(function () {
     return Math.random() - 0.5;
@@ -1403,7 +1403,7 @@ arr.sort((a,b) => Math.random() - 0.5);
 
 3. 如果强行让类数组调用 `push` 方法，则会根据 `length` 属性值的位置进行属性的扩充
 
-```
+```js
 var obj = {
     "0": "a",
     "1": "b",
@@ -1420,7 +1420,7 @@ Array.prototype.push = function (target) {
 属性要为索引（数字）属性，必须有 `length` 属性，最好加上 `push`
 
 1. 
-```
+```js
 var obj = {
     "2": "a",
     "3": "b",
@@ -1437,14 +1437,14 @@ obj = {
 }
 ```
 2. 封装 `type` 方法
-```
+```js
 typeof([]) -- array
 typeof({}) -- object
 typeof(function) -- object
 typeof(new Number()) -- number object
 typeof(123) -- number
 ```
-```
+```js
 function type(target) {
     var typeStr = typeof target,
         toStr = Object.prototype.toString.call(target),
@@ -1465,8 +1465,7 @@ function type(target) {
 }
 ```
 3. 数组去重 在原型链上编程
-
-```
+```js
 Array.prototype.unique = function () {
     var arr = [];
     for(var i=0; i<this.length; i++) {
@@ -1478,7 +1477,7 @@ Array.prototype.unique = function () {
 }
 ```
 利用对象属性名不能重复 `hash`
-```
+```js
 Array.prototype.unique = function () {
     var temp = {},
         arr = [],
@@ -1493,7 +1492,7 @@ Array.prototype.unique = function () {
 }
 ```
 4. 一个字符串 `[a-z]` 组成，找出该字符串第一个只出现一次的字母
-```
+```js
 function findStr(str) {
     var obj = {},
         len = str.length;
@@ -1512,7 +1511,7 @@ function findStr(str) {
 }
 ```
 5. 字符串去重
-```
+```js
 String.prototype.unique = function () {
     var obj = {},
         str = "",
@@ -1531,7 +1530,7 @@ String.prototype.unique = function () {
 
 在 `try` 里面发生错误，不会执行错误后的 `try` 里面的代码
 
-```
+```js
 try {
     console.log("a"); // a
     console.log(b);
@@ -1599,7 +1598,7 @@ Element 节点的一些方法
 `ele.setAttribute(); ele.getAttribute();`
 
 1. 封装函数，返回元素 `e` 的第 `n` 层祖先元素节点
-```
+```js
 function retParent(elem, n) {
     while(elem && n) {
         elem = elem.parentElement;
@@ -1609,7 +1608,7 @@ function retParent(elem, n) {
 }
 ```
 2. 编辑函数，封装 `myChildren` 功能，解决以前部分浏览器的兼容性问题
-```
+```js
 Element.prototype.myChildren = function () {
     var child = this.childNodes,
         len = child.length,
@@ -1623,7 +1622,7 @@ Element.prototype.myChildren = function () {
 }
 ```
 3. 封装 `hasChildren()` 方法，不可用 `children` 属性
-```
+```js
 Element.prototype.myChildren = function () {
     var child = this.childNodes,
         len = child.length;
@@ -1636,7 +1635,7 @@ Element.prototype.myChildren = function () {
 }
 ```
 4. 封装函数，返回元素 `e` 的第 `n` 个兄弟元素节点，`n` 为正，返回后面的兄弟元素节点，`n` 为负，返回前面的，`n` 为0，返回自己
-```
+```js
 function retSibling(e, n) {
     while(e && n) {
         if(n > 0) {
@@ -1659,7 +1658,7 @@ function retSibling(e, n) {
 }
 ```
 5. 封装函数 `insertAfter();` 功能类似 `insertBefore();`
-```
+```js
 Element.prototype.insertAfter = function (targetNode, afterNode) {
     var beforeNode = afterNode.nextElementSibling;
     if(beforeNode == null) {
@@ -1673,7 +1672,7 @@ Element.prototype.insertAfter = function (targetNode, afterNode) {
 ## 日期对象 `Date()`
 
 1. 打印当前时间
-```
+```js
 function myTime() {
     var date = new Date(),
         year = date.getFullYear(),
@@ -1692,7 +1691,7 @@ function myTime() {
 setInterval("myTime()",100);
 ```
 2. 计时器
-```
+```js
 var mNode = document.getElementsByTagName("span")[0],
     sNode = document.getElementsByTagName("span")[1],
     minute = 0,
@@ -1714,7 +1713,7 @@ var timer = setInterval(function () {
 ## 浏览器DOM
 
 1. 封装兼容性方法，求滚动轮滚动距离 `getScrollOffset()`
-```
+```js
 function getScrollOffset() {
     if(widow.pageXOffset) {
         return {
@@ -1730,7 +1729,7 @@ function getScrollOffset() {
 }
 ```
 2. 封装兼容性方法，返回浏览器视口尺寸 `getViewportOffset()`
-```
+```js
 function getViewportOffset() {
     if(window.innerWidth) {
         return {
@@ -1774,7 +1773,7 @@ function getViewportOffset() {
 三个方法功能类似，用法都是将x，y坐标传入，滚动到当前位置。`scrollBy()` 滚动会叠加
 
 3. 自动阅读
-```
+```js
 var timer = 0,
     key = true;
 start.onclick = function () {
@@ -1803,7 +1802,7 @@ stop.onclick = function () {
 IE: `ele.currentStyle[prop]`
 
 4. 封装兼容性方法 `getStyle(elem, prop)`
-```
+```js
 function getStyle(elem, prop) {
     if(window.getComputedStyle) {
         return window.getComputedStyle(elem, null)[prop];
@@ -1813,10 +1812,10 @@ function getStyle(elem, prop) {
 }
 ```
 5. 小方块运动
-```
-// html
+```html
 <div></div>
-// css
+```
+```css
 div {
     width: 100px;
     height: 100px;
@@ -1825,7 +1824,8 @@ div {
     left: 0;
     top: 0;
 }
-// 
+```
+```js
 function getStyle(elem, prop) {
     if(window.getComputedStyle) {
         return window.getComputedStyle(elem, null)[prop];
@@ -1862,7 +1862,7 @@ var timer = setInterval(function () {
 程序 `this` 指向 `window`
 
 1. 封装兼容性的 `addEvent(elem, type, handle);` 方法
-```
+```js
 function addEvent(elem, type, handle) {
     if(elem.addEventListener) {
         elem.addEventListener(type, handle, false);
@@ -1909,7 +1909,7 @@ IE 没有捕获事件
 W3C `event.stopPropagation();` IE `event.cancelBubble = true;`
 
 封装取消冒泡的函数 `stopBubble(event)`
-```
+```js
 function stopBubble(event) {
     if(event.stopPropagation) {
         event.stopPropagation();
@@ -1930,7 +1930,7 @@ function stopBubble(event) {
 `event.returnValue = false;` 兼容IE
 
 封装阻止默认事件的函数 `cancelHandler(event)`
-```
+```js
 function cancelHandler(event) {
     if(event.preventDefault) {
         event.preventDefault();
@@ -1948,7 +1948,7 @@ function cancelHandler(event) {
 
 `event.target || event.srcElement`
 
-```
+```js
 ele.onxxx = function (e) {
     var event = e || window.event;
     var target = event.target || event.srcElement;
@@ -1973,7 +1973,7 @@ ele.onxxx = function (e) {
 DOM3标准规定：`click` 事件只能监听左键，只能通过 `mousedown` 和 `mouseup` 来判断鼠标键
 
 1. 解决 `mousedown` 和  `click` 的冲突
-```
+```js
 var firstTime = 0,
     lastTime = 0,
     key = false;
@@ -2010,7 +2010,7 @@ document.onclick = function () {
 
 `input focus blur change`
 
-```
+```html
 <input value="please input" style="color:#999" 
     onfocus="if(this.value=='please input'){this.value='';this.style.color='#424242';}" 
     onblur="if(this.value==''){this.value='please input';this.style.color='#999';}" />
@@ -2033,7 +2033,7 @@ document.onclick = function () {
 
 ## 异步加载js
 
-```
+```js
 function loadScript(url, callback) {
     var script = document.createElement("script");
     if(script.readyState) {
@@ -2089,7 +2089,7 @@ var tools = {
 
 贪婪匹配，后加 `?` 变为非贪婪匹配
 
-```
+```js
 var reg = /^a/gim;
 var str = "abc";
 
@@ -2104,7 +2104,7 @@ str.split(reg);
 reg = /(\w)\1(\w)\2/g;
 str.replace(reg, "$2$1");
 ```
-```
+```js
 \w === [0-9A-z_]
 \W === [^\w]
 \d === [0-9]
@@ -2115,7 +2115,7 @@ str.replace(reg, "$2$1");
 \B === 非单词边界
 .  === [^\r\n]
 ```
-```
+```js
 n+      {1, }
 n*      {0, }
 n?      {0,1}
@@ -2126,18 +2126,18 @@ n{x,}   {x, }
 x(?=y) // 正向肯定查找，匹配x仅当x后跟着y
 x(!=y) // 正向否定查找
 
-[\s\S] 代表任何东西
+[\s\S] // 代表任何东西
 ```
 
 1. 检验一个字符串首尾是否含有数字
-```
+```js
 var reg = /^\d|\d$/g;
 var str = "123abc123";
 reg.test(str); // true
 str.match(reg); // ["123", "123"]
 ```
 2. the-first-name --> theFirstName
-```
+```js
 var reg = /-(\w)/g;
 var str = "the-first-name";
 str.replace(reg, function ($, $1) {
@@ -2145,14 +2145,35 @@ str.replace(reg, function ($, $1) {
 });
 ```
 3. 字符串去重
-```
+```js
 var str = "aaaaabbbbbbcccccccccccccccccc";
 var reg = /(\w)\1*/g;
 str.replace(reg, "$1");
 ```
 4. 1000000 --> 1,000,000
-```
+```js
 var str = "100000000000";
 var reg = /(?=(\B)(\d{3})+$)/g;
 str.replace(reg, ",");
+```
+5. 获得满足条件的内容并描红
+```html
+<p><label for="content">内容区</label></p>
+<textarea id="content" cols="80" rows="20"></textarea>
+<p>
+    <label for="keywords">关键字</label>
+    <input type="text" id="keywords">
+    <button id="search">搜索</button>
+</p>
+```
+```js
+let btn = document.getElementById('search');
+ btn.onclick = function () {
+     let content = document.getElementById('content').value;
+     let pattern = document.getElementById('keywords').value;
+     let reg = new RegExp(pattern, 'g');
+     let str = '<span style="color:red">$&</span>';
+
+     document.getElementById('result').innerHTML = '<pre>' + content.replace(reg, str) + '</pre>';
+ }
 ```

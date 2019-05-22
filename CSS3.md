@@ -29,7 +29,7 @@ CSS3弹性盒子（Flexible Box 或 flexbox），是一种当页面需要适应�
 
 `flex-direction` 属性指定了弹性子元素在父容器中的位置。
 
-```
+```css
 flex-direction: row | row-reverse | column |column-reverse;
 ```
 * row: 横向从左到右排列（左对齐），默认的排列方式。
@@ -41,7 +41,7 @@ flex-direction: row | row-reverse | column |column-reverse;
 
 `flex-wrap` 属性指定了弹性子元素在父容器中的位置。
 
-```
+```css
 flex-wrap: nowrap | wrap | wrap-reverse | initial | inherit;
 ```
 * nowrap: 不换行，子元素可能会溢出容器，默认值。
@@ -56,7 +56,7 @@ flex-wrap: nowrap | wrap | wrap-reverse | initial | inherit;
 
 `justify-content` 属性定义了子元素在主轴上的对齐方式。
 
-```
+```css
 justify-content: flex-start | flex-end | center | space-between | space-around;
 ```
 * flex-start: 沿主轴左对齐，默认值。
@@ -69,7 +69,7 @@ justify-content: flex-start | flex-end | center | space-between | space-around;
 
 `align-items` 属性定义了子元素在交叉轴上的对齐方式。
 
-```
+```css
 align-items: flex-start | flex-end | center | baseline | stretch;
 ```
 * flex-start: 沿交叉轴上对齐。
@@ -82,7 +82,7 @@ align-items: flex-start | flex-end | center | baseline | stretch;
 
 `align-content` 属性用于修改 `flex-wrap` 属性的行为，类似于 `align-items`，设置各个行的对齐方式。
 
-```
+```css
 align-content: flex-start | flex-end | center | space-between | space-around | stretch;
 ```
 * stretch: 各行将会伸展以占用剩余的空间，默认值。
@@ -107,7 +107,7 @@ align-content: flex-start | flex-end | center | space-between | space-around | s
 
 `order` 属性用整数值来定义子元素的排列顺序，数值小的排在前面，默认为0，可以为负值。
 
-```
+```css
 order: <integer>;
 ```
 
@@ -115,7 +115,7 @@ order: <integer>;
 
 `flex-grow` 属性定义子元素的放大比列，默认值为0；
 
-```
+```css
 flex-grow: <number>;
 ```
 
@@ -123,7 +123,7 @@ flex-grow: <number>;
 
 `flex-shrink` 属性定义子元素的缩小比列，默认值为1。
 
-```
+```css
 flex-shrink: <number>;
 ```
 
@@ -131,7 +131,7 @@ flex-shrink: <number>;
 
 `flex-basis` 属性用于设置或检索弹性盒伸缩基准值，默认值auto。
 
-```
+```css
 flex-basis: <number>px;
 ```
 
@@ -139,7 +139,7 @@ flex-basis: <number>px;
 
 `flex` 属性用于指定弹性子元素如何分配空间，是 `flex-grow`、`flex-shrink` 和 `flex-basis` 属性的简写属性。
 
-```
+```css
 flex: auto | none | initial | inherit | [flex-grow] [flex-shrink] [flex-basis];
 ```
 * auto: 1 1 auto。
@@ -151,7 +151,7 @@ flex: auto | none | initial | inherit | [flex-grow] [flex-shrink] [flex-basis];
 
 `align-self` 属性用于设置子元素自身的对齐方式，可覆盖 `align-items` 属性，默认值为 `auto`，表示继承父元素的 `align-items` 属性，如果没有父元素，则等同于 `stretch`。
 
-```
+```css
 align-items: auto | flex-start | flex-end | center | baseline | stretch;
 ```
 
@@ -208,7 +208,7 @@ CSS Grid 布局（又名“网格”），是一个基于二维网格布局的�
 ### grid-template-columns 和 grid-template-rows
 
 定义网格的列和行。这些值的大小表示轨道大小，他们之间的空间表示网格线。
-```
+```css
 grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
 
 grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
@@ -221,21 +221,21 @@ grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
 `auto`: 设置列宽或行高自动等于它的内容的宽度或高度。
 
 `%`: 将列或行调整为它的容器宽度或高度的百分比。
-```
+```css
 grid-template-columns: 40px auto 1fr 2fr 25%;
 grid-template-rows: 25% 100px auto;
 ```
-```
+```css
 grid-template-columns: [col1] 50px [col2 col3] 25%;
 grid-template-columns: [row1] 25% [row2] 100px; 
 ```
 
 使用 `repeat` 方法指定行或列的重复次数，后面加上逗号以及需要重复的值。
-```
+```css
 grid-template-rows: repeat(2, 1fr 50px) 25%;
 ``` 
 等同于
-```
+```css
 grid-template-rows: 1fr 50px 1fr 50px 25%;
 ```
 重复方法带有自动填充（`auto-fill` 和 `auto-fit`）的功能。它的功能是根据容器的大小，尽可能多地放入指定大小的行或列。可以通过结合 `auto-fill`、`auto-fit` 和 `minmax` 来更灵活地布局。
@@ -243,24 +243,24 @@ grid-template-rows: 1fr 50px 1fr 50px 25%;
 列的宽度会随容器大小而改变，在可以插入一个60px宽的列之前，当前行的所有列会一直拉伸，如果容器无法使所有网格项放在同一行，余下的网格项将移至新的一行。
 
 `auto-fit` 效果和 `auto-fill` 几乎一样。不同点在于，当容器的大小大于各网格项之和时，`auto-fill` 将会持续地在一端放入空行或空列，使所有网格项挤到另一边；而 `auto-fit` 则不会在一端放入空行或空列，而是会将所有网格项拉伸至合适的大小。
-```
+```css
 grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
 
 grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
 ```
 
 使用 `minmax` 函数限制网格项目的大小，指定网格项允许的尺寸范围。第一列宽度为100px，第二列宽度最小值是50px，最大值是200px。
-```
+```css
 grid-template-columns: 100px minmax(50px, 200px);
 ```
 
 ### grid-template-areas
 
 定义网格区域名称，从而定义网络模板。每个单词代表一个网格单元格，每对引号代表一行。网格区域重复的名称会导致内容跨越这些单元格。句点 `.` 代表一个空单元格。`none` 表示无网格区域被定义。
-```
+```css
 grid-template-areas: <grid-area-name> | . | none;
 ```
-```
+```css
 grid-template-areas: 
     "header header header"
     "content . advert"
@@ -270,7 +270,7 @@ grid-template-areas:
 ### grid-column-gap、grid-row-gap 和 grid-gap
 
 指定网格线的大小。即在行/列之间设置间距宽度。
-```
+```css
 grid-column-gap: <line-size>;
 
 grid-row-gap: <line-size>;
@@ -298,7 +298,7 @@ align-items: start | end | center | stretch;
 `justify-content` 定义沿列轴对齐网格容器。
 
 `align-content` 定义沿行轴对齐网格容器。
-```
+```css
 justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
 
 align-content: start | end | center | stretch | space-around | space-between | space-evenly;
@@ -307,7 +307,7 @@ align-content: start | end | center | stretch | space-around | space-between | s
 ### grid-auto-columns 和 grid-auto-rows
 
 指定任何自动生成的网格轨道（也称为隐式网格轨道）的大小。当显式定位超出定义网格范围的行或列时，将创建隐式网格轨道。
-```
+```css
 grid-auto-columns: <track-size> ...;
 
 grid-auto-rows: <track-size> ...;
@@ -322,7 +322,7 @@ grid-auto-rows: <track-size> ...;
 `column`: 告诉自动布局算法依次填充每一列，并根据需要添加新列。
 
 `dense`: 告诉自动布局算法尝试在网格更早的时候填充接下来出现较小的项目留有的空白。请注意，`dense`可能会导致您的项目无序显示。
-```
+```css
 grid-auto-flow: row | column | row dense | column dense;
 ```
 
@@ -338,7 +338,7 @@ grid-auto-flow: row | column | row dense | column dense;
 
 `<grid-auto-flow> [<grid-auto-rows> [/ <grid-auto-columns>]]`: `grid-auto-flow`，`grid-template-rows` 和 `grid-template-columns` 属性分别接收相同的值，如果省略了 `grid-template-columns` 属性，它将设置为 `grid-template-rows` 属性的值。如果两者均被忽略，那么都将被设置为初始值。
 
-```
+```css
 grid: none | subgrid | <grid-template-rows> / <grid-template-columns> | <grid-auto-flow> [<grid-auto-rows> [/ <grid-auto-columns>]];
 ```
 
@@ -367,7 +367,7 @@ grid: none | subgrid | <grid-template-rows> / <grid-template-columns> | <grid-au
 `span <name>`: 网格项包含指定名称网格项的网格线之前的网格轨道。
 
 `auto`: 表明自动定位，自动跨度或者默认跨度为一。
-```
+```css
 grid-column-start: <number> | <name> | span <number> | span <name> | auto;
 
 grid-column-end: <number> | <name> | span <number> | span <name> | auto;
@@ -382,7 +382,7 @@ grid-row-end: <number> | <name> | span <number> | span <name> | auto;
 `grid-column-start` + `grid-row-start` 和`grid-column-end` + `grid-row-end` 属性分别的简写形式。
 
 `<start-line> / <end-line>`: 每一个属性均接收自定义的一个相同值，包括跨度。
-```
+```css
 grid-column: <start-line> / <end-line> | <start-line> / span <value>;
 
 grid-row: <start-line> / <end-line> | <start-line> / span <value>;
@@ -392,7 +392,7 @@ grid-row: <start-line> / <end-line> | <start-line> / span <value>;
 
 定义网格项的名称。
 
-```
+```css
 grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
 ```
 
@@ -403,7 +403,7 @@ grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
 `align-self` 沿行轴对齐网格项中的内容。适
 
 适用于单一网格项中的内容。
-```
+```css
 justify-self: start | end | center | stretch;
 
 align-self: start | end | center | stretch;
