@@ -1,5 +1,11 @@
 # Vue基础
 
+### Vue实例
+
+**生命周期**
+
+<img src="./img/vue-lifecycle.png" alt="lifecycle" max-width="100%">
+
 ### 计算属性和侦听器
 
 #### 计算属性
@@ -66,11 +72,45 @@ vue init webpack app-name
 ### 组件化
 
 **组件化**
-1. 独立的
-2. 可复用的
-3. 整体化的
+* 独立的
+* 可复用的
+* 整体化的
 
 **为什么要组件化**
-1. 实现功能模块的复用
-2. 高执行效率
-3. 开发单页面复杂应用
+* 实现功能模块的复用
+* 高执行效率
+* 开发单页面复杂应用
+
+### 过渡&动画
+
+#### 过渡的类名
+
+<img src="./img/vue-transition.png" alt="transition" max-width="100%">
+
+`v-enter-active` 和 `v-leave-active` 可以控制进入/离开过渡的不同的缓和曲线
+
+### Vue Router
+
+路由管理器
+
+当 `<router-link>` 对应的路由匹配成功，将自动设置 `class` 属性值 `.router-link-active`
+
+### Vuex
+
+状态管理库
+
+<img src="./img/vue-vuex.png" alt="vuex" max-width="100%">
+
+* `state` 驱动数据的数据源
+* `mutation` 同步函数
+* `action` 异步操作
+
+Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新
+
+你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地**提交 (commit) mutation**。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用
+
+**vuex 规则**
+
+1. 应用层级的状态应该集中到单个 store 对象中。
+2. 提交 mutation 是更改状态的唯一方法，并且这个过程是同步的。
+3. 异步逻辑都应该封装到 action 里面。
