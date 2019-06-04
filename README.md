@@ -12,4 +12,6 @@
 * [MDN](https://developer.mozilla.org/zh-CN/)
 * [API速查](http://overapi.com/)
 * [Vue.js](https://cn.vuejs.org/)
+* [Element](https://element.eleme.cn/#/zh-CN) Vue组件库
 * [ECharts](https://echarts.baidu.com/)
+* [JSONPlaceholder](http://jsonplaceholder.typicode.com/)

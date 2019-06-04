@@ -50,6 +50,14 @@
 
 永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上
 
+### v-on
+
+`.stop` 调用 `event.stopPropagation()`
+
+`.prevent` 调用 `event.preventDefault()`
+
+`.native` 监听组件根元素的原生事件
+
 ### vue-cli
 
 创建一个项目 **3.x版本**
@@ -81,6 +89,29 @@ vue init webpack app-name
 * 高执行效率
 * 开发单页面复杂应用
 
+#### 组件间的数据传递
+
+##### props
+
+```js
+props: {
+  prop: {
+    type: Object,  // 检测类型
+    default: any,  // 指定默认值
+    required: true,
+    validator: Function
+  }
+}
+```
+
+##### vm.$emit
+
+子组件像父组件传值
+
+```js
+vm.$emit(eventName, [...arg]);
+```
+
 ### 过渡&动画
 
 #### 过渡的类名
@@ -93,7 +124,41 @@ vue init webpack app-name
 
 路由管理器
 
-当 `<router-link>` 对应的路由匹配成功，将自动设置 `class` 属性值 `.router-link-active`
+**active-class**
+
+当 `<router-link>` 对应的路由匹配成功，将自动设置 `class` 属性值 `router-link-active` 可通过路由的构造选项 `linkActiveClass` 来全局配置
+
+**tag**
+
+默认值 `"a"`， 用于渲染 `<router-link>` 的标签类型，例如 `<li>` --> `tag="li"`
+
+**redirect**
+
+重定向，通过 `routes` 配置来完成
+
+```js
+redirect: '/a'
+```
+```js
+// 命名路由
+redirect: {name: 'foo'}
+```
+```js
+redirect: to => {
+  // 方法接收 目标路由 作为参数
+  // return 重定向的 字符串路径/路径对象
+}
+```
+
+#### HTTP
+
+`vue-resource` 
+
+```js
+created () {
+  this.$http.get('url').then((data) => console.log(data))
+}
+```
 
 ### Vuex
 
