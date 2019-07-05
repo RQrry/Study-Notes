@@ -118,49 +118,6 @@ var tools = {
 
 
 /**
- * 排序
- */
-// 冒泡排序 升序
-function bubbleSort(arr) {
-    let len = arr.length;
-    for(let i=0; i<len-1; i++) {
-        for(let j=0; j<len-i-1; j++) {
-            if(arr[j] > arr[j+1]) {
-                [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
-            }
-        }
-    }
-    return arr;
-}
-// 快速排序
-let arr = [6, 1, 2, 7, 9, 3, 4, 5, 10, 8];
-function quickSort(left, right) {
-    let i = left;
-    let j = right;
-    let flag = arr[left];
-    if (left > right) return;
-    while(i !== j) {
-        while(arr[j] >= flag && i < j) {
-            j--;
-        }
-        while(arr[i] <= flag && i < j) {
-            i++;
-        }
-        if (i < j) {
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-    }
-    arr[left] = arr[i];
-    arr[i] = flag;
-    quickSort(left, i-1);
-    quickSort(i+1, right);
-    return;
-}
-quickSort(0, arr.length-1)
-console.log(arr);
-
-
-/**
  * 封装函数 考虑兼容性
  */
 // 滚动轮滚动距离

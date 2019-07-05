@@ -6,6 +6,8 @@
 * [ES6](https://github.com/RQrry/Study-Notes/blob/master/ES6.md)
 * [Vue基础](https://github.com/RQrry/Study-Notes/blob/master/Vue基础.md)
 * [Examination](https://github.com/RQrry/Study-Notes/blob/master/Examination.md)
+* [算法](https://github.com/RQrry/Study-Notes/blob/master/算法.md)
+* [Go基础](https://github.com/RQrry/Study-Notes/blob/master/Go基础.md)
 
 # 网站收藏
 
