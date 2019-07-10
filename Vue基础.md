@@ -4,7 +4,7 @@
 
 **生命周期**
 
-<img src="./img/vue-lifecycle.png" alt="lifecycle" max-width="100%">
+<img src="./img/vue-lifecycle-explain.png" alt="lifecycle" max-width="100%">
 
 ### 计算属性和侦听器
 
