@@ -729,3 +729,176 @@ function add(a, b) {
 console.log(add(2,3));
 console.log(add(2)(3));
 ```
+
+## Promise
+
+```js
+setTimeout(()=>{
+  console.log(1) 
+},0)
+Promise.resolve().then(()=>{
+  console.log(2) 
+})
+console.log(3)
+
+// [3, 2, 1]
+```
+
+```js
+setTimeout(()=>{
+  console.log(1) 
+},0)
+let a=new Promise((resolve)=>{
+  console.log(2)
+  resolve()
+}).then(()=>{
+  console.log(3) 
+}).then(()=>{
+  console.log(4) 
+})
+console.log(5) 
+
+// [2, 5, 3, 4, 1]
+```
+
+```js
+let a=new Promise((resolve)=>{
+  console.log(2)
+  resolve()
+})
+a.then(()=>{
+  console.log(3) 
+})
+a.then(()=>{
+  console.log(4) 
+})
+
+// [2, 3, 4]
+```
+
+```js
+new Promise((resolve,reject)=>{
+  console.log("promise1")
+  resolve()
+}).then(()=>{
+  console.log("then11")
+  new Promise((resolve,reject)=>{
+    console.log("promise2")
+    resolve()
+  }).then(()=>{
+    console.log("then21")
+  }).then(()=>{
+    console.log("then22")
+  })
+}).then(()=>{
+  console.log("then12")
+})
+
+// [promise1, then11, promise2, then21, then12, then22]
+```
+
+```js
+new Promise((resolve,reject)=>{
+  console.log("promise1")
+  resolve()
+}).then(()=>{
+  console.log("then11")
+  return new Promise((resolve,reject)=>{
+    console.log("promise2")
+    resolve()
+  }).then(()=>{
+    console.log("then21")
+  }).then(()=>{
+    console.log("then22")
+  })
+}).then(()=>{
+  console.log("then12")
+})
+
+// [promise1, then11, promise2, then21, then22, then12]
+```
+
+```js
+new Promise((resolve,reject)=>{
+  console.log("promise1")
+  resolve()
+}).then(()=>{
+  console.log("then11")
+  new Promise((resolve,reject)=>{
+    console.log("promise2")
+    resolve()
+  }).then(()=>{
+    console.log("then21")
+  }).then(()=>{
+    console.log("then22")
+  })
+}).then(()=>{
+  console.log("then12")
+})
+new Promise((resolve,reject)=>{
+  console.log("promise3")
+  resolve()
+}).then(()=>{
+  console.log("then31")
+})
+
+// [promise1, promise3, then11, promise2, then31, then21, then12, then22]
+```
+
+```js
+async function async1() {
+  console.log("async1 start");
+  await async2();
+  console.log("async1 end");
+}
+
+async  function async2() {
+  console.log( 'async2');
+}
+
+console.log("script start");
+
+setTimeout(function () {
+  console.log("settimeout");
+},0);
+
+async1();
+
+new Promise(function (resolve) {
+  console.log("promise1");
+  resolve();
+}).then(function () {
+  console.log("promise2");
+});
+console.log('script end');
+
+// [script start, async1 start, async2, promise1, script end, async1 end, promise2, settimeout]
+```
+
+```js
+async function async1() {
+  console.log("async1 start");
+  await  async2();
+  console.log("async1 end");
+}
+async  function async2() {
+  console.log( 'async2');
+}
+
+async1();
+
+new Promise(function (resolve) {
+  console.log("promise1");
+  resolve();
+}).then(function () {
+  console.log("promise2");
+}).then(function () {
+  console.log("promise3");
+}).then(function () {
+  console.log("promise4");
+}).then(function () {
+  console.log("promise5");
+});
+
+// [async1 start, async2, promise1, async1 end, promise2, promise3, promise3, promise5]
+```
