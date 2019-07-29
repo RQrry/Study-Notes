@@ -205,3 +205,34 @@ class NameForm extends React.Component {
 `<Framment></Framment>` 占位符组件
 
 `<input dangerouslySetInnerHTML={{__html: item}}>` 对输入的 html 标签不进行转义
+
+### React 哲学
+
+##### 将设计好的 UI 划分为组件层级
+
+##### 构建静态版本
+
+静态版本不应使用 state
+
+自上而下构建应用（简单应用） 自下而上构建组件
+
+##### 确定 state 的最小（且完整）表示
+
+检查数据是否属于 state：
+- 该数据是否是由父组件通过 props 传递而来的？如果是，它应该不是 state
+- 该数据是否随时间的推移而保持不变？如果是，那它应该也不是 state
+- 你能否根据其他 state 或 props 计算出该数据的值？如果是，那它也不是 state
+
+#### 确定 state 放置的位置
+
+确定哪个组件能够改变这些 state，或者说拥有这些 state
+
+对于应用中的每一个 state：
+- 找到根据这个 state 进行渲染的所有组件
+- 找到他们的共同所有者（common owner）组件（在组件层级上高于所有需要该 state 的组件）
+- 该共同所有者组件或者比它层级更高的组件应该拥有该 state
+- 如果你找不到一个合适的位置来存放该 state，就可以直接创建一个新的组件来存放该 state，并将这一新组件置于高于共同所有者组件层级的位置
+
+#### 添加反向数据流
+
+低层级的组件更新高层级组件中的 state
