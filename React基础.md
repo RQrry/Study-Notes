@@ -60,6 +60,18 @@ constructor(props) {
     counter: state.counter + props.increment
   }));
   ```
+
+  ```js
+  this.setState((state) => ({
+    list: [...state.list, state.inputValue],
+    inputValue: ''
+  }), () => {
+    // 回调函数
+    // state 更新之后执行
+    // 操作页面 DOM
+  })
+  ```
+  建议使用 `componentDidUpdate()` 代替 `setState()` 的回调函数法
   
 * State 的更新会被合并
   
@@ -236,3 +248,11 @@ class NameForm extends React.Component {
 #### 添加反向数据流
 
 低层级的组件更新高层级组件中的 state
+
+### 组件的生命周期
+
+某一时刻被组件自动调用的函数
+
+<img src="./img/react-lifecycle.jpg" alt="react组件生命周期常用" />
+
+<img src="./img/react-lifecycle-unusual.jpg" alt="react组件生命周期（包括不常用）" />
