@@ -256,3 +256,106 @@ class NameForm extends React.Component {
 <img src="./img/react-lifecycle.jpg" alt="react组件生命周期常用" />
 
 <img src="./img/react-lifecycle-unusual.jpg" alt="react组件生命周期（包括不常用）" />
+
+##### 挂载
+当组件实例被创建并插入 DOM 中时，其生命周期调用顺序如下：
+
+- **constructor()**
+- static getDerivedStateFromProps()
+- **render()**
+- **componentDidMount()**
+
+##### 更新
+当组件的 `props` 或 `state` 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
+
+- static getDerivedStateFromProps()
+- shouldComponentUpdate()
+- **render()**
+- getSnapshotBeforeUpdate()
+- **componentDidUpdate()**
+
+##### 卸载
+当组件从 DOM 中移除时会调用如下方法：
+
+- **componentWillUnmount()**
+
+##### 错误处理
+当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+
+static getDerivedStateFromError()
+componentDidCatch()
+
+#### 常用的生命周期方法
+
+##### render()
+
+`render()` 方法是 class 组件中唯一必须实现的方法
+
+`render()` 函数应该为纯函数，这意味着在不修改组件 `state` 的情况下，每次调用时都返回相同的结果，并且它不会直接与浏览器交互。
+
+如需与浏览器进行交互，请在 `componentDidMount()` 或其他生命周期方法中执行你的操作。保持 `render()` 为纯函数，可以使组件更容易思考
+
+> 如果 `shouldComponentUpdate()` 返回 `false`，则不会调用 `render()`
+
+##### constructor()
+
+如果不初始化 state 或不进行方法绑定，则不需要为 React 组件实现构造函数
+
+```js
+constructor (props) {
+  super(props);
+  this.state = {
+    // variable
+  };
+  this.handleClick = this.handleClick.bind(this);
+}
+```
+
+##### componentDidMount()
+
+通过网络请求获取数据
+
+`componentDidMount()` 会在组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。
+
+这个方法是比较适合添加订阅的地方。如果添加了订阅，请不要忘记在 `componentWillUnmount()` 里取消订阅
+
+##### componentDidUpdate()
+
+`componentDidUpdate()` 会在更新后会被立即调用。首次渲染不会执行此方法
+
+当组件更新后，可以在此处对 DOM 进行操作。如果你对更新前后的 props 进行了比较，也可以选择在此处进行网络请求。（例如，当 props 未发生变化时，则不会执行网络请求）
+
+```js
+componentDidUpdate(prevProps) {
+  // 典型用法（不要忘记比较 props）：
+  if (this.props.userID !== prevProps.userID) {
+    this.fetchData(this.props.userID);
+  }
+}
+```
+
+> 如果 `shouldComponentUpdate()` 返回值为 `false`，则不会调用 `componentDidUpdate()`
+
+##### componentWillUnmount()
+
+`componentWillUnmount()` 会在组件卸载及销毁之前直接调用。在此方法中执行必要的清理操作，例如，清除 timer，取消网络请求或清除在 `componentDidMount()` 中创建的订阅等
+
+#### 不常用的生命周期方法
+
+##### shouldComponentUpdate()
+
+根据 `shouldComponentUpdate()` 的返回值，判断 React 组件的输出是否受当前 state 或 props 更改的影响。默认行为是 state 每次发生变化组件都会重新渲染。大部分情况下，你应该遵循默认行为。
+
+当 props 或 state 发生变化时，`shouldComponentUpdate()` 会在渲染执行之前被调用。返回值默认为 true。首次渲染或使用 `forceUpdate()` 时不会调用该方法。
+
+此方法仅作为性能优化的方式而存在。不要企图依靠此方法来“阻止”渲染，因为这可能会产生 bug。你应该考虑使用内置的 `PureComponent` 组件，而不是手动编写 `shouldComponentUpdate()`。`PureComponent` 会对 props 和 state 进行浅层比较，并减少了跳过必要更新的可能性。
+
+```js
+shouldComponentUpdate (nextProps, nextState) {
+  if (nextProps.variable !== this.props.variable) {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
